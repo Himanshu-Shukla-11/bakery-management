@@ -1,0 +1,241 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="/static/img/carousel-1.jpg" alt="">
+                <div class="owl-carousel-inner">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-lg-8">
+                                <h1 class="display-1 text-light mb-4 animated slideInDown">Welcome to Gulshan Bakery & Sweets </h1>
+                                <p class="text-light fs-5 mb-4 pb-3">Warmly welcoming you to our home of delightful treats. Quality ingredients, exceptional taste.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="/static/img/carousel-2.jpg" alt="">
+                <div class="owl-carousel-inner">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-lg-8">s
+                                <h1 class="display-1 text-light mb-4 animated slideInDown">We Bake With Passion</h1>
+                                <p class="text-light fs-5 mb-4 pb-3">Experience the magic of freshness! Straight from our ovens to your heart. Baked daily for your delight!</p>
+                                <p class="text-light fs-5 mb-4 pb-3">Celebrate the season with our limited-time specialties! From festive cookies to seasonal pies, each bite is a taste of joy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row img-twice position-relative h-100">
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="/static/img/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-6 align-self-end">
+                            <img class="img-fluid rounded" src="/static/img/about-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <p class="text-primary text-uppercase mb-2">// About Us</p>
+                        <h1 class="display-6 mb-4">We Bake Every Item From The Core Of Our Hearts</h1>
+                        <p>At Gulshan Bakery & Sweets, we believe that every moment is worth celebrating. Established in 2011, our bakery is more than just a place that churns out delicious treats; it's a haven for all things sweet and savory.</p>
+                        <p>We take pride in being an active part of the community. Gulshan Bakery & Sweets is not just a business; it's a gathering place for friends, families, and fellow dessert enthusiasts. We love being a part of your special moments, from birthdays and weddings to everyday celebrations.</p>
+                        <p>Thank you for being a part of our story. We look forward to serving you the finest baked goods and creating delicious memories together.</p><br>
+                        <div class="row g-2 mb-4">
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Quality Products
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Custom Products
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Online Order
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Home Delivery
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Product Start -->
+    <div class="container-xxl bg-light my-6 py-6 pt-0">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="text-primary text-uppercase mb-2">// Bakery Products</p>
+                <h1 class="display-6 mb-4">Explore The Categories Of Our Bakery Products</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">All Items</h3>
+                            <span>It contain bakery products like Cakes , cookie , chocolate , donut and so many bakery product.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/product-0.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="{% url 'categories' %}"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Chocolate</h3>
+                            <span>Chocolate is created from the cocoa bean. A cacao tree with fruit pods in various stages of ripening.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/chocolate.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=chocolate"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">CupCake</h3>
+                            <span>A cupcake is a small cake designed to serve one person, which may be baked in a small thin paper or aluminum cup.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/cup-cakes.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=cupcake"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Donuts</h3>
+                            <span>A donuts is a delicious, deep-fried breakfast treat. Most donut are round and have a hole in the center. Some have frosting and sprinkles, too.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/donut.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=donuts"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Cakes</h3>
+                            <span>A cake is a type of sweet dessert which is baked. Cakes are often made to celebrate special occasions like birthdays or weddings.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/Cake.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=Cakes"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h4 class="mb-3">Biscuits & Cookies</h4>
+                            <span>A cookie or biscuit  is a baked snack or dessert that is typically small, flat, and sweet. It usually contains flour, sugar, egg, or butter. </span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/product-2.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=Biscuits & Cookies"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-4">If You Have Any Query, Please Contact Us</h1>
+            </div>
+            <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 text-light mb-0">The Best Bakery In Your City</h1>
+                    </div>
+                    <div class="col-lg-6 text-lg-end">
+                        <div class="d-inline-flex align-items-center text-start">
+                            <i class="fa fa-phone-alt fa-4x flex-shrink-0"></i>
+                            <div class="ms-4">
+                                <p class="fs-5 fw-bold mb-0">Call Us</p>
+                                <p class="fs-1 fw-bold mb-0">+012 345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0 justify-content-center">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+ 
+{% endblock %}

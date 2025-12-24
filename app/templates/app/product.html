@@ -1,0 +1,114 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-white animated slideInDown mb-3">Products</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Product Start -->
+    <div class="container-xxl bg-light my-6 py-6 pt-0">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="text-primary text-uppercase mb-2">// Bakery Products</p>
+                <h1 class="display-6 mb-4">Explore The Categories Of Our Bakery Products</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">All Items</h3>
+                            <span>It contain bakery products like Cakes , cookie , chocolate , donut and so many bakery product.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/product-0.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="{% url 'categories' %}"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Chocolate</h3>
+                            <span>Chocolate is created from the cocoa bean. A cacao tree with fruit pods in various stages of ripening.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/chocolate.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=chocolate"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">CupCake</h3>
+                            <span>A cupcake is a small cake designed to serve one person, which may be baked in a small thin paper or aluminum cup.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/cup-cakes.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=cupcake"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Donuts</h3>
+                            <span>A donuts is a delicious, deep-fried breakfast treat. Most donut are round and have a hole in the center. Some have frosting and sprinkles, too.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/donut.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=donuts"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h3 class="mb-3">Cakes</h3>
+                            <span>A cake is a type of sweet dessert which is baked. Cakes are often made to celebrate special occasions like birthdays or weddings.</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/Cake.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=Cakes"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                        <div class="text-center p-4">
+                            <h4 class="mb-3">Biscuits & Cookies</h4>
+                            <span>A cookie or biscuit  is a baked snack or dessert that is typically small, flat, and sweet. It usually contains flour, sugar, egg, or butter. </span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="/static/img/product-2.jpg" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href="/categories/?f=Biscuits & Cookies"><i class="fa fa-eye text-primary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product End -->
+
+
+{% endblock %}

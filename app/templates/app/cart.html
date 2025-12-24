@@ -1,0 +1,337 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<style>
+    .cart-img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .qty-box {
+        display: flex;
+        align-items: center;
+        background: #f5f5f5;
+        border-radius: 30px;
+        padding: 5px;
+    }
+
+    .qty-btn {
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        color: #333;
+    }
+
+    .qty-input {
+        width: 50px;
+        text-align: center;
+        border: none;
+        background: transparent;
+        font-weight: 600;
+    }
+
+    .qty-input:focus {
+        outline: none;
+    }
+
+    .table-responsive {
+        overflow-x: hidden;
+
+    }
+
+    .proceedtocheck {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    .cart-qty {
+        width: 120px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cart-price {
+        width: 120px;
+        text-align: center;
+    }
+
+    .cart-remove {
+        width: 40px;
+        text-align: right;
+        padding: 12px;
+    }
+
+
+
+
+    /* =======================
+   Mobile Responsive Fix
+   ======================= */
+    /* Extra small screens */
+    @media (max-width: 480px) {
+
+        .cart-img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .qty-btn {
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .qty-text {
+            font-size: 14px;
+            min-width: 24px;
+            text-align: center;
+        }
+    }
+
+    /* =======================
+   Desktop Layout Fix
+   ======================= */
+    @media (min-width: 769px) {
+
+        .cart-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .cart-left {
+            width: 45%;
+        }
+
+        .cart-bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: auto;
+            /* pushes qty+price+trash to right */
+        }
+
+        .cart-qty {
+            width: auto;
+        }
+
+        .cart-price {
+            width: auto;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .cart-remove {
+            width: auto;
+            text-align: right;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+
+        .cart-card {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .cart-left {
+            width: 100%;
+        }
+
+        /* Bottom row */
+        .cart-bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-qty {
+            margin-right: auto;
+        }
+
+        .cart-price {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .cart-remove {
+            margin-left: auto;
+        }
+
+        .proceedtocheck {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .proceedtocheck .btn {
+            width: 100%;
+        }
+    }
+</style>
+
+
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3">Shopping Cart</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<section id="cart_items">
+    <div class="container">
+
+        {% if cart_items %}
+
+        <div class="table-responsive cart_info ">
+            <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp">
+                <center>
+                    <h1 class="display-4 text-light mb-0">Product Details</h1>
+                </center>
+            </div>
+            <br>
+
+            <form action="{% url 'updatecart' %}" method="post">
+                {% csrf_token %}
+
+                <div class="row g-4">
+
+                    {% for item in cart_items %}
+                    <div class="col-12">
+                        <div class="cart-card d-flex align-items-center p-3">
+
+                            <!-- Image -->
+                            <div class="cart-left">
+                                {% with item.product.images.first as img %}
+                                {% if img %}
+                                <img src="{{ img.image.url }}" class="cart-img">
+                                {% else %}
+                                <div class="cart-img placeholder">No Image</div>
+                                {% endif %}
+                                {% endwith %}
+
+                                <div>
+                                    <h6 class="mb-1">{{ item.product.product_name }}</h6>
+                                    <small class="text-muted">₹{{ item.product.discount_price }}</small>
+                                </div>
+                            </div>
+
+
+                            <!-- Quantity -->
+                            <!-- Bottom Row (Mobile) -->
+                            <div class="cart-bottom-row">
+
+                                <div class="cart-qty">
+                                    <div class="qty-box">
+                                        <button type="button" class="qty-btn"
+                                            onclick="changeQty('{{ item.id }}', -1)">−</button>
+
+                                        <span id="qtyText{{ item.id }}" class="qty-text">
+                                            {{ item.quantity }}
+                                        </span>
+
+                                        <button type="button" class="qty-btn"
+                                            onclick="changeQty('{{ item.id }}', 1)">+</button>
+
+                                        <input type="hidden" id="qty{{ item.id }}" name="cartQty{{ item.id }}"
+                                            value="{{ item.quantity }}" data-stock="{{ item.product.stock_quantity }}">
+                                    </div>
+                                </div>
+
+                                <div class="cart-price fw-bold">
+                                    ₹{{ item.subtotal }}
+                                </div>
+
+                                <div class="cart-remove">
+                                    <a href="{% url 'removefromcart' cid=item.id %}" class="text-danger fs-5">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <hr>
+                </div>
+                <div class="proceedtocheck">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary px-3">
+                            Update Cart
+                        </button>
+                    </div>
+                    <div>
+                        <h4>Cart Total: <strong>₹{{ cart.total_price }}</strong></h4>
+                    </div>
+                    <div>
+                        <a href="{% url 'check-out' %}" class="btn btn-primary px-3">
+                            Proceed To Checkout
+                        </a>
+                    </div>
+                </div>
+
+
+            </form>
+            <div class=" row mt-5">
+
+            </div>
+
+        </div>
+
+        {% else %}
+        <div class="text-center mt-5">
+            <h3>Your cart is empty.</h3>
+            <a href="{% url 'categories' %}" class="btn btn-primary mt-3">
+                Continue Shopping
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<script>
+    function changeQty(id, value) {
+        const input = document.getElementById('qty' + id);
+        const text = document.getElementById('qtyText' + id);
+
+        let qty = parseInt(input.value) + value;
+        const stock = parseInt(input.dataset.stock);
+        const FRONTEND_MAX = 10;
+
+        // minimum
+        if (qty < 1) qty = 1;
+
+        // backend stock check FIRST (only place alert)
+        if (qty > stock) {
+            qty = stock;
+            alert(`Only ${stock} item(s) available. Hurry up!`);
+        }
+        // frontend max (NO alert here)
+        else if (qty > FRONTEND_MAX) {
+            qty = FRONTEND_MAX;
+        }
+
+        input.value = qty;
+        text.innerText = qty;
+    }
+</script>
+
+
+{% endblock %}

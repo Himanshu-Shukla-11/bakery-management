@@ -1,0 +1,81 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3"></h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+{% if orders %}
+
+<!-- Order details heading -->
+<h3 class="text-center fw-bold text-dark mb-4">
+    Your Order Details
+</h3>
+
+<!-- Order table -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>
+                    {% for item in order.items.all %}
+                        {{ item.product.product_name }} (x{{ item.quantity }}){% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        No products
+                    {% endfor %}
+                </td>
+                <td>₹{{ order.total_price }}</td>
+                <td>{{ order.status|title }}</td>
+                <td>
+                    {% if order.status == "pending" %}
+                        <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger btn-sm">
+                            Cancel
+                        </a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Thank you section -->
+<div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="display-4 mb-0">!! Thank you for Placing the Order !!</h2>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<!-- No orders message -->
+<div class="text-center mt-5">
+    <h4 class="mb-3">You have not placed any orders yet.</h4>
+    <a href="{% url 'categories' %}" class="btn btn-primary btn-lg">
+        Start Shopping
+    </a>
+</div>
+
+{% endif %}
+
+{% endblock %}

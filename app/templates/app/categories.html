@@ -1,0 +1,97 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3">All Items</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container my-5">
+
+    {% for product in all_product %}
+    <div class="table-responsive">
+        <table class="table">
+
+            <h2 class="text-primary mb-4">{{ product.product_name }}</h2>
+
+            <tr>
+                <td>
+                    <div class="mb-4">
+                        <div class="row">
+                            {% for image in product.images.all %}
+                            <div class="col-md-4">
+                                <img src="{{ image.image.url }}" class="cat-img" alt="Product Image">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <span class="product-desc"
+                                      id="desc-{{ product.id }}"
+                                      data-full="{{ product.product_description|escapejs }}">
+                                </span>
+                                <a href="javascript:void(0);"
+                                   class="toggle-desc"
+                                   data-target="desc-{{ product.id }}">
+                                    More
+                                </a>
+                            </p>
+
+                            <p class="card-text"><b>Price:</b> ₹{{ product.price }}</p>
+
+                            {% if product.discount_price %}
+                            <p class="card-text"><b>Discounted Price:</b> ₹{{ product.discount_price }}</p>
+                            {% endif %}
+
+                            {% if product.offer %}
+                            <p class="card-text">Offer: {{ product.offer.discount_percentage }}% off</p>
+                            <p class="card-text">
+                                Offer Period: {{ product.offer.start_date }} - {{ product.offer.end_date }}
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="text-center">
+                    {% if product.stock_quantity == 0 %}
+                        <h5 style="color:red">Out of Stock</h5>
+                    {% else %}
+                        <a href="{% url 'addtocart' pid=product.id %}">
+                            Add To Cart <i class="fa fa-shopping-cart"></i>
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    {% empty %}
+    <!-- THIS RUNS ONLY WHEN NO PRODUCTS -->
+    <div class="text-center my-5">
+        <h3 class="text-danger">
+            This category item is not available.
+        </h3>
+        <p>Please try another one.</p>
+
+        <a href="{% url 'product' %}" class="btn btn-primary mt-3">
+            Browse Categories
+        </a>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

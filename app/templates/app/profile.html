@@ -1,0 +1,87 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-white animated slideInDown mb-3">User Profile</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                <center>
+                    <h1 class="display-4 text-light mb-0"><i class="fa fa-user"></i>&nbsp;&nbsp;Customer Information</h1>
+                </center>   
+                </div>
+            </div>
+            <div class="row g-0 justify-content-center">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <h3>First Name :</h3>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" readonly>
+                                    <label for="firstname"><h4>{{request.user.profile.first_name}}</h4></label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <h3>Last Name :</h3>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" readonly>
+                                    <label for="lastname"><h4>{{request.user.profile.last_name}}</h4></label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <h3>Email :</h3>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" readonly>
+                                    <label for="email"><h4>{{request.user.username}}</h4></label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <h3>Contact :</h3>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" readonly>
+                                    <label for="contact"><h4>{{ request.user.profile.contact }}</h4></label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 text-center">
+                                <center><h2><a href="{% url 'logoutuser' %}"><u>Logout</u></a></h2></center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+{% endblock %}
