@@ -26,7 +26,9 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://bakery-management-production.up.railway.app",
+]
 
 # Application definition
 
@@ -152,6 +154,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
